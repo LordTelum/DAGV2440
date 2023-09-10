@@ -1,0 +1,21 @@
+//create base sphere
+polySphere -r 3 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+move -relative -objectSpace -worldSpaceDistance 0 3 0;
+
+//create middle sphere
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -e -radius 2;
+move -relative -objectSpace -worldSpaceDistance 0 7 0;
+
+//create head sphere
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+move -relative -objectSpace -worldSpaceDistance 0 9.5 0;
+
+//create nose
+polyCone -r 1 -h 2 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r 0 10.582914 0 ;
+rotate -r -eu -fo 85 0 0 ;
+scale -r 0.406367 0.406367 0.406367 ;
+scale -r 1 2.433567 1 ;
+scale -r 0.787616 0.787616 0.787616 ;
+move -r 0.0657451 -0.924179 1.154926 ;
