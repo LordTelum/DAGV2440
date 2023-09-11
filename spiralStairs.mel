@@ -1,0 +1,24 @@
+// Define the number of steps
+int $steps = 500;
+
+// Loop through each step
+for ($i = 0; $i < $steps; $i++)
+{
+    // Create a cube for the step
+    string $cube[] = `polyCube -w 1 -h 0.1 -d 2`;
+    
+    // Calculate the angle for the current step
+    float $angle = $i * (18 * (3.14 / 180.0));
+    
+    // Calculate the position for the step
+    float $posX = 5.0 * cos($angle);
+    float $posZ = 5.0 * sin($angle);
+    float $posY = $i;
+    
+    // Move the cube to the calculated position
+    move $posX $posY $posZ $cube[0];
+    
+    // Rotate the cube around the Y axis
+    rotate -r -os 0 ($i * 18) 0 $cube[0];
+}
+
