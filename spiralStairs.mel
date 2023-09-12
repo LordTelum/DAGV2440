@@ -1,24 +1,33 @@
-// Define the number of steps
-int $steps = 500;
+// Function to create a spiral staircase
+proc createSpiralStaircase(int $steps) {
+    // Set initial position and rotation values
+    float $initialPosX = 0.0;
+    float $initialPosY = 0.0;
+    float $initialPosZ = 0.0;
+    float $initialRotX = 0.0;
+    float $initialRotY = 90.0;
+    float $initialRotZ = 0.0;
 
-// Loop through each step
-for ($i = 0; $i < $steps; $i++)
-{
-    // Create a cube for the step
-    string $cube[] = `polyCube -w 1 -h 0.1 -d 2`;
-    
-    // Calculate the angle for the current step
-    float $angle = $i * (18 * (3.14 / 180.0));
-    
-    // Calculate the position for the step
-    float $posX = 5.0 * cos($angle);
-    float $posZ = 5.0 * sin($angle);
-    float $posY = $i;
-    
-    // Move the cube to the calculated position
-    move $posX $posY $posZ $cube[0];
-    
-    // Rotate the cube around the Y axis
-    rotate -r -os 0 ($i * 18) 0 $cube[0];
+    // Loop through each step
+    for ($i = 0; $i < $steps; $i++) {
+        // Create a cube for the step
+        string $cube[] = `polyCube -w 1 -h 0.1 -d 2`;
+        
+        // Calculate the angle for the current step
+        float $angle = $i * (18 * (3.14 / 180.0));
+        
+        // Calculate the position for the step
+        float $posX = 5.0 * cos($angle);
+        float $posZ = 5.0 * sin($angle);
+        float $posY = $i;
+        
+        // Move the cube to the calculated position
+        move ($initialPosX + $posX) ($initialPosY + $posY) ($initialPosZ + $posZ) $cube[0];
+        
+        // Rotate the cube to the calculated rotation
+        rotate -r -os $initialRotX ($initialRotY + ($i * -25)) $initialRotZ $cube[0];
+    }
 }
 
+// Call the function to create a spiral staircase with 40 steps
+createSpiralStaircase(40);
