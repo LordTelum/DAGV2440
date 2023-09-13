@@ -1,5 +1,5 @@
-// Function to create a spiral staircase
-proc createSpiralStaircase(int $steps) {
+// Function to generate a spiral staircase based on user input
+proc GenerateStaircase(int $numStairs, float $stairLength, float $stairWidth, float $stairHeight, float $pivotOffset, float $stepHeight, float $stepRotation) {
     // Set initial position and rotation values
     float $initialPosX = 0.0;
     float $initialPosY = 0.0;
@@ -9,17 +9,17 @@ proc createSpiralStaircase(int $steps) {
     float $initialRotZ = 0.0;
 
     // Loop through each step
-    for ($i = 0; $i < $steps; $i++) {
+    for ($i = 0; $i < $numStairs; $i++) {
         // Create a cube for the step
-        string $cube[] = `polyCube -w 1 -h 0.1 -d 2`;
+        string $cube[] = `polyCube -w $stairWidth -h $stairHeight -d $stairLength`;
         
-        // Calculate the angle for the current step
-        float $angle = $i * (18 * (3.14 / 180.0));
+        // Get the angle for the current step
+        float $angle = $i * ($stepRotation * (3.14 / 180.0));
         
-        // Calculate the position for the step
-        float $posX = 5.0 * cos($angle);
-        float $posZ = 5.0 * sin($angle);
-        float $posY = $i;
+        // Get the position for the step
+        float $posX = $pivotOffset * cos($angle);
+        float $posZ = $pivotOffset * sin($angle);
+        float $posY = $i * $stepHeight;
         
         // Move the cube to the calculated position
         move ($initialPosX + $posX) ($initialPosY + $posY) ($initialPosZ + $posZ) $cube[0];
@@ -29,5 +29,5 @@ proc createSpiralStaircase(int $steps) {
     }
 }
 
-// Call the function to create a spiral staircase with 40 steps
-createSpiralStaircase(40);
+// Call the function to demonstrate completion
+GenerateStaircase(20, 8, 3, .5, -6, 4, 25);
