@@ -1,4 +1,4 @@
-// Function to generate a spiral staircase based on user input
+// Function for spiral stairs
 proc GenerateStaircase(int $numStairs, float $stairLength, float $stairWidth, float $stairHeight, float $pivotOffset, float $stepHeight, float $stepRotation) {
     // Set initial position and rotation values
     float $initialPosX = 0.0;
@@ -29,5 +29,5 @@ proc GenerateStaircase(int $numStairs, float $stairLength, float $stairWidth, fl
     }
 }
 
-// Call the function to demonstrate completion
-GenerateStaircase(20, 8, 3, .5, -6, 4, 25);
+// Call the function
+GenerateStaircase(40, 8, 3, .5, -6, 4, 25);
